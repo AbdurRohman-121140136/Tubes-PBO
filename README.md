@@ -1,4 +1,4 @@
-# Cyberpunk-Shooter
+# Cyber-Shooter
 
 >Cyber-Shooter. Proyek ini adalah proyek game menggunakan pygame.
 

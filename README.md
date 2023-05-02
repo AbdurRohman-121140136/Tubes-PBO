@@ -1,6 +1,6 @@
-<img alt="logo" src="https://raw.githubusercontent.com/riecho14/Dendam-Si-Tikus/image_assets/logo.svg" width="400">
 
->. Proyek ini adalah proyek game menggunakan pygame.
+
+>Cyberpunk-Shooter. Proyek ini adalah proyek game menggunakan pygame.
 
 ## Screenshots
 

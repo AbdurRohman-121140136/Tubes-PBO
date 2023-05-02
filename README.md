@@ -1,4 +1,4 @@
-
+#Cyberpunk-Shooter
 
 >Cyberpunk-Shooter. Proyek ini adalah proyek game menggunakan pygame.
 
@@ -15,12 +15,10 @@ Untuk menjalankan game membutuhkan Python3 dan modul Pygame.
 
 ## Dependensi paket (library) yang dibutuhkan untuk menjalankan aplikasi
 - import pygame
-- import random
-- import os
-- import json
+
 
 ## Cara bermain
-Cara memainkan game ini adalah dengan menggerakkan mouse menggunakan tombol panah atau A/D dan spasi atau klik kiri mouse untuk menembak. Tikus tidak boleh menyentuh kucing atau darah dan nyawa akan berkurang.
+Cara memainkan game ini adalah dengan menggunakan keyboard tombol panah atau W/A/S/D untuk menggerakan Hero, tombol SPACE untuk melompat dan tombol ENTER untuk menyerang. Jika Hero menyentuh atau terkena serangan dari musuh, darah dan nyawa Hero akan berkurang.
 
 ## UML Class Diagram
 

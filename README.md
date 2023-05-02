@@ -1,14 +1,14 @@
 # Cyberpunk-Shooter
 
->Cyberpunk-Shooter. Proyek ini adalah proyek game menggunakan pygame.
+>Cyber-Shooter. Proyek ini adalah proyek game menggunakan pygame.
 
 ## Screenshots
 
 
 ## Deskripsi projek
-Aplikasi ini merupakan permainan tentang hero yang berusaha mengalahkan musuh-musuhnya dengan cara menyerang musuh menggunakan kekuatan yang dimilikinya
+Aplikasi ini merupakan permainan tentang hero yang berusaha mengalahkan musuh-musuhnya dengan cara menyerang musuh menggunakan kekuatan dan senjata yang dimilikinya
 
-permainan ini bertujuan untuk menyelesaikan stage-stage yang menantang dan musuh yang kuat agar dapat mengalahkan boss terkuat pada game. Nyawa musuh akan berkurang saat Hero menyerang atau melakukan attack ke musuh. Permainan habis saat Hero berhasil mengalahkan Boss.
+permainan ini bertujuan untuk menyelesaikan stage-stage yang menantang dan musuh yang kuat agar dapat mengalahkan boss terkuat pada game. Nyawa musuh akan berkurang saat Hero menyerang atau melakukan attack ke musuh. Permainan habis saat Hero mati atau berhasil mengalahkan Boss.
 
 ## System requirements
 Untuk menjalankan game membutuhkan Python3 dan modul Pygame.

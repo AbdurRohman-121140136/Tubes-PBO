@@ -24,6 +24,6 @@ Cara memainkan game ini adalah dengan menggunakan keyboard tombol panah atau W/A
 https://drive.google.com/file/d/1fHYvALy99m2WCTkJYx53prRyO4A6Tl42/view?usp=sharing
 
 ## Kontributor pengembangan aplikasi
-RC-10
+RD-10
 | Nama | NIM | Tugas | Github|
 | :---: | :---: | :---: | :---: |

@@ -14,6 +14,7 @@ game_status = True
 #define player action variables
 moving_left = False
 moving_right = False
+falling = 0.8
 #screen
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Cyber Shooter')
@@ -29,6 +30,7 @@ class Hero(pygame.sprite.Sprite):
         self.direction = 1
         self.flip = False
         self.jump = False
+        self.gravity = 0
         self.animation_list = []
         self.action = 0
         self.frame_index = 0
@@ -55,6 +57,7 @@ class Hero(pygame.sprite.Sprite):
     def move(self, moving_left, moving_right):
         #reset movement var
         dx = 0
+        dy = 0
 
         #assign movement var if moving left or right
         if moving_left:
@@ -65,10 +68,25 @@ class Hero(pygame.sprite.Sprite):
             dx = self.speed
             self.flip = False
             self.direction = -1
-       
+            
+        #jump 
+        if self.jump == True and self.ground == 300:
+            self.gravity = -13
+            self.jump = False
+        
+        #update gravity
+        self.gravity += falling
+        if self.gravity > 10:
+            self.gravity
+        dy += self.gravity
+
         #update rect
         self.rect.x += dx
+        self.rect.y += dy
 
+        if self.rect.bottom + dy > self.ground:
+            self.rect.bottom = self.ground 
+          
     def animation(self):
         #update animation
         animation_cooldown = 100
@@ -110,6 +128,8 @@ while game_status:
                 moving_left = True
             if event.key == pygame.K_d:
                 moving_right = True
+            if event.key == pygame.K_w:
+                player.jump = True
 
         #keyboard button released
         if event.type == pygame.KEYUP:

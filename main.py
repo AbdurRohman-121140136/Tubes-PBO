@@ -30,6 +30,7 @@ class Hero(pygame.sprite.Sprite):
         self.direction = 1
         self.flip = False
         self.jump = False
+        self.ground = 300
         self.gravity = 0
         self.animation_list = []
         self.action = 0

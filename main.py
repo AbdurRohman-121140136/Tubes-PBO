@@ -18,7 +18,7 @@ moving_right = False
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Cyber Shooter')
 
-class Soldier(pygame.sprite.Sprite):
+class Hero(pygame.sprite.Sprite):
     def __init__(self, x, y, speed):
         pygame.sprite.Sprite.__init__(self)
         
@@ -95,7 +95,7 @@ class Soldier(pygame.sprite.Sprite):
     
 
 #player
-player = Soldier( 200, 300, 5)
+player = Hero( 200, 300, 5)
 
 #while True:
 while game_status:

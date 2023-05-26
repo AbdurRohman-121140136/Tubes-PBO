@@ -27,3 +27,4 @@ https://app.diagrams.net/#G1zsric5aIghytZ5DKN7zpb8JOoasvD54i
 RD-10
 | Nama | NIM | Tugas | Github|
 | :---: | :---: | :---: | :---: |
+| Varell Anthonio | 121140122 | Desainer | VarellAnthonio |

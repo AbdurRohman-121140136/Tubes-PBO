@@ -21,7 +21,7 @@ Untuk menjalankan game membutuhkan Python3 dan modul Pygame.
 Cara memainkan game ini adalah dengan menggunakan keyboard tombol W/A/S/D untuk menggerakan Hero, tombol SPACE untuk melompat dan tombol ENTER untuk menyerang. Jika Hero menyentuh atau terkena serangan dari musuh, darah dan nyawa Hero akan berkurang.
 
 ## UML Class Diagram
-https://drive.google.com/file/d/1fHYvALy99m2WCTkJYx53prRyO4A6Tl42/view?usp=sharing
+https://app.diagrams.net/#G1zsric5aIghytZ5DKN7zpb8JOoasvD54i
 
 ## Kontributor pengembangan aplikasi
 RD-10

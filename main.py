@@ -187,7 +187,7 @@ class Hero(Char):
 				dx = 0
 				if self.char_type == 'enemy':
 					self.direction *= -1
-					self.move_counter = 0
+					self.__move_counter = 0
 			if tile[1].colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
 				if self.gravity < 0:
 					self.gravity = 0
@@ -263,19 +263,19 @@ class Hero(Char):
 class Enemy(Hero):
 	def __init__(self, char_type, x, y, scale, speed, ammo):
 		super().__init__(char_type, x, y, scale, speed, ammo)
-		self.move_counter = 0
-		self.vision = pygame.Rect(0, 0, 150, 20)
-		self.idling = False
-		self.idling_counter = 0
-		self.unlimited = False
+		self.__move_counter = 0
+		self.__vision = pygame.Rect(0, 0, 150, 20)
+		self.__idling = False
+		self.__idling_counter = 0
+		self.__unlimited = False
 		self.timer = 2
 
 	def shoot(self):
 		if self.shoot_cooldown == 0 and self.ammo > 0:
 			self.shoot_cooldown = 20
-			if self.ammo < 5 and self.unlimited == False:
+			if self.ammo < 5 and self.__unlimited == False:
 				if self.timer == 0:
-					self.unlimited = True
+					self.__unlimited = True
 				self.timer -= 1
 				self.shoot_cooldown = 5
 				self.ammo -= 0
@@ -287,16 +287,16 @@ class Enemy(Hero):
 
 	def ai(self):
 		if self.alive and player.alive:
-			if self.idling == False and random.randint(1, 200) == 1:
+			if self.__idling == False and random.randint(1, 200) == 1:
 				self.update_action(0)#0: idle
-				self.idling = True
-				self.idling_counter = 50
-			if self.vision.colliderect(player.rect):
+				self.__idling = True
+				self.__idling_counter = 50
+			if self.__vision.colliderect(player.rect):
 				self.update_action(0)#0: idle
 				#shoot
 				self.shoot()
 			else:
-				if self.idling == False:
+				if self.__idling == False:
 					if self.direction == 1:
 						ai_moving_right = True
 					else:
@@ -304,16 +304,16 @@ class Enemy(Hero):
 					ai_moving_left = not ai_moving_right
 					self.move(ai_moving_left, ai_moving_right)
 					self.update_action(1)#1: run
-					self.move_counter += 1
-					self.vision.center = (self.rect.centerx + 75 * self.direction, self.rect.centery)
+					self.__move_counter += 1
+					self.__vision.center = (self.rect.centerx + 75 * self.direction, self.rect.centery)
 
-					if self.move_counter > TILE_SIZE:
+					if self.__move_counter > TILE_SIZE:
 						self.direction *= -1
-						self.move_counter *= -1
+						self.__move_counter *= -1
 				else:
-					self.idling_counter -= 1
-					if self.idling_counter <= 0:
-						self.idling = False
+					self.__idling_counter -= 1
+					if self.__idling_counter <= 0:
+						self.__idling = False
 
 		self.rect.x += screen_scroll
 

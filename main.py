@@ -268,15 +268,15 @@ class Enemy(Hero):
 		self.__idling = False
 		self.__idling_counter = 0
 		self.__unlimited = False
-		self.timer = 2
+		self.__timer = 2
 
 	def shoot(self):
 		if self.shoot_cooldown == 0 and self.ammo > 0:
 			self.shoot_cooldown = 20
 			if self.ammo < 5 and self.__unlimited == False:
-				if self.timer == 0:
+				if self.__timer == 0:
 					self.__unlimited = True
-				self.timer -= 1
+				self.__timer -= 1
 				self.shoot_cooldown = 5
 				self.ammo -= 0
 			else:

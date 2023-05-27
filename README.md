@@ -3,7 +3,7 @@
 >Cyber-Shooter. Proyek ini adalah proyek game menggunakan pygame.
 
 ## Screenshots
-https://github.com/rhmnx/Tubes-PBO/blob/main/menu.jpg
+![Menu](https://github.com/rhmnx/Tubes-PBO/blob/main/menu.jpg)
 
 ## Deskripsi projek
 Aplikasi ini merupakan permainan tentang hero yang berusaha mengalahkan musuh-musuhnya dengan cara menyerang musuh menggunakan kekuatan dan senjata yang dimilikinya.

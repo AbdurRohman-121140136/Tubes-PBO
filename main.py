@@ -1,16 +1,16 @@
-
 import pygame
 from pygame import mixer
 import os
 import random
 import csv
 import button
+from abc import ABC, abstractmethod
 
 mixer.init()
 pygame.init()
 
 WIDTH = 800
-HEIGHT = int(WIDTH * 0.8)
+HEIGHT = 640
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Cyber Shooter')
@@ -103,9 +103,20 @@ def reset_level():
 
 	return data
 
-class Hero(pygame.sprite.Sprite):
+class Char(ABC, pygame.sprite.Sprite):
+	def __init__(self, x, y, scale):
+		super().__init__()
+		self.x = x
+		self.y = y
+		self.scale = scale
+
+	@abstractmethod
+	def update(self):
+		pass
+
+class Hero(Char):
 	def __init__(self, char_type, x, y, scale, speed, ammo):
-		pygame.sprite.Sprite.__init__(self)
+		super().__init__(x, y, scale)
 
 		self.alive = True
 		self.char_type = char_type
@@ -256,6 +267,23 @@ class Enemy(Hero):
 		self.vision = pygame.Rect(0, 0, 150, 20)
 		self.idling = False
 		self.idling_counter = 0
+		self.unlimited = False
+		self.timer = 2
+
+	def shoot(self):
+		if self.shoot_cooldown == 0 and self.ammo > 0:
+			self.shoot_cooldown = 20
+			if self.ammo < 5 and self.unlimited == False:
+				if self.timer == 0:
+					self.unlimited = True
+				self.timer -= 1
+				self.shoot_cooldown = 5
+				self.ammo -= 0
+			else:
+				self.ammo -= 1
+			bullet = Bullet(self.rect.centerx + (0.75 * self.rect.size[0] * self.direction), self.rect.centery + (0.01 * self.rect.size[1]), self.direction)	
+			bullet_group.add(bullet)
+			shot_fx.play()	
 
 	def ai(self):
 		if self.alive and player.alive:
@@ -315,7 +343,7 @@ class World():
 						player = Hero('player', x * TILE_SIZE, y * TILE_SIZE, 1.7 , 5, 20)
 						health_bar = HealthBar(10, 10, player.health, player.health)
 					elif tile == 34:
-						enemy = Enemy('enemy', x * TILE_SIZE, y * TILE_SIZE, 1.7, 2, 20)
+						enemy = Enemy('enemy', x * TILE_SIZE, y * TILE_SIZE, 1.7, 2, 10)
 						enemy_group.add(enemy)
 					elif tile == 32:
 						item_box = ItemBox('Ammo', x * TILE_SIZE, y * TILE_SIZE)

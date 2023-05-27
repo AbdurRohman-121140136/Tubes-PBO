@@ -393,9 +393,9 @@ class HealthBar():
 	def draw(self, health):
 		self.health = health
 		ratio = self.health / self.max_health
-		pygame.draw.rect(screen, BLACK, (self.x - 2, self.y - 2, 154, 24))
-		pygame.draw.rect(screen, RED, (self.x, self.y, 150, 20))
-		pygame.draw.rect(screen, GREEN, (self.x, self.y, 150 * ratio, 20))
+		pygame.draw.rect(screen, 'black', (self.x - 2, self.y - 2, 154, 24))
+		pygame.draw.rect(screen, 'cyan', (self.x, self.y, 150, 20))
+		pygame.draw.rect(screen, 'black', (self.x, self.y, 150 * ratio, 20))
 
 class Bullet(pygame.sprite.Sprite):
 	def __init__(self, x, y, direction):
@@ -446,8 +446,8 @@ class ScreenFade():
 
 		return fade_complete
 
-intro_fade = ScreenFade(1, BLACK, 4)
-death_fade = ScreenFade(2, PINK, 4)
+intro_fade = ScreenFade(1, 'black', 4)
+death_fade = ScreenFade(2, 'black', 4)
 
 start_button = button.Button(WIDTH // 2 - 130, HEIGHT // 2 - 150, start_img, 1)
 exit_button = button.Button(WIDTH // 2 - 110, HEIGHT // 2 + 50, exit_img, 1)
@@ -488,7 +488,7 @@ while run:
 		draw_bg()
 		world.draw()
 		health_bar.draw(player.health)
-		draw_text('AMMO: ', font, WHITE, 10, 35)
+		draw_text('AMMO: ', font, 'black', 10, 35)
 		for x in range(player.ammo):
 			screen.blit(bullet_img, (90 + (x * 10), 40))
 

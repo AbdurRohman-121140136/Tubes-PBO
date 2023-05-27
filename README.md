@@ -4,6 +4,7 @@
 
 ## Screenshots
 ![Menu](https://github.com/rhmnx/Tubes-PBO/blob/main/menu.jpg)
+![Gameplay](https://github.com/rhmnx/Tubes-PBO/blob/main/gameplay.jpg)
 
 ## Deskripsi projek
 Aplikasi ini merupakan permainan tentang hero yang berusaha mengalahkan musuh-musuhnya dengan cara menyerang musuh menggunakan kekuatan dan senjata yang dimilikinya.
@@ -15,7 +16,9 @@ Untuk menjalankan game membutuhkan Python3 dan modul Pygame.
 
 ## Dependensi paket (library) yang dibutuhkan untuk menjalankan aplikasi
 - import pygame
-
+- import OS
+- import random
+- import csv
 
 ## Cara bermain
 Cara memainkan game ini adalah dengan menggunakan keyboard tombol A/D untuk menggerakan Hero, tombol W untuk melompat dan tombol SPASI untuk menyerang. Hero akan mati apabila terkena spike atau nyawanya habis terkena serangan dari musuh.

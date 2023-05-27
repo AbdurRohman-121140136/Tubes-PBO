@@ -73,13 +73,6 @@ item_boxes = {
 	'Ammo'		: ammo_box_img,
 }
 
-BG = (144, 201, 120)
-RED = (255, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-BLACK = (0, 0, 0)
-PINK = (235, 65, 54)
-
 font = pygame.font.SysFont('Futura', 30)
 
 def draw_text(text, font, text_col, x, y):

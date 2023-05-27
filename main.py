@@ -187,7 +187,9 @@ class Hero(pygame.sprite.Sprite):
 					dy = tile[1].top - self.rect.bottom
 
 		if pygame.sprite.spritecollide(self, spike_group, False):
-			self.health = 0
+			self.health -= 5
+			self.jump = True 
+			self.in_air = False
 
 		level_complete = False
 		if pygame.sprite.spritecollide(self, exit_group, False):
@@ -393,9 +395,9 @@ class HealthBar():
 	def draw(self, health):
 		self.health = health
 		ratio = self.health / self.max_health
-		pygame.draw.rect(screen, 'black', (self.x - 2, self.y - 2, 154, 24))
-		pygame.draw.rect(screen, 'cyan', (self.x, self.y, 150, 20))
-		pygame.draw.rect(screen, 'black', (self.x, self.y, 150 * ratio, 20))
+		pygame.draw.rect(screen, 'cyan', (self.x - 2, self.y - 2, 154, 24))
+		pygame.draw.rect(screen, 'black', (self.x, self.y, 150, 20))
+		pygame.draw.rect(screen, 'cyan', (self.x, self.y, 150 * ratio, 20))
 
 class Bullet(pygame.sprite.Sprite):
 	def __init__(self, x, y, direction):
@@ -583,4 +585,3 @@ while run:
 	pygame.display.update()
 
 pygame.quit()
-

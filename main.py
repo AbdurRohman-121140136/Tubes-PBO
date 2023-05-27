@@ -143,11 +143,6 @@ class Hero(pygame.sprite.Sprite):
 		self.frame_index = 0
 		self.action = 0
 		self.update_time = pygame.time.get_ticks()
-		#ai specific variables
-		self.move_counter = 0
-		self.vision = pygame.Rect(0, 0, 150, 20)
-		self.idling = False
-		self.idling_counter = 0
 		
 		#load all images for the players
 		animation_types = ['Idle', 'Run', 'Jump', 'Death']
@@ -264,6 +259,49 @@ class Hero(pygame.sprite.Sprite):
 			self.ammo -= 1
 			shot_fx.play()
 
+	def update_animation(self):
+		#update animation
+		ANIMATION_COOLDOWN = 100
+		#update image depending on current frame
+		self.image = self.animation_list[self.action][self.frame_index]
+		#check if enough time has passed since the last update
+		if pygame.time.get_ticks() - self.update_time > ANIMATION_COOLDOWN:
+			self.update_time = pygame.time.get_ticks()
+			self.frame_index += 1
+		#if the animation has run out the reset back to the start
+		if self.frame_index >= len(self.animation_list[self.action]):
+			if self.action == 3:
+				self.frame_index = len(self.animation_list[self.action]) - 1
+			else:
+				self.frame_index = 0
+
+	def update_action(self, new_action):
+		#check if the new action is different to the previous one
+		if new_action != self.action:
+			self.action = new_action
+			#update the animation settings
+			self.frame_index = 0
+			self.update_time = pygame.time.get_ticks()
+
+	def check_alive(self):
+		if self.health <= 0:
+			self.health = 0
+			self.speed = 0
+			self.alive = False
+			self.update_action(3)
+
+	def draw(self): 
+		screen.blit(pygame.transform.flip(self.image, self.flip, False), self.rect)
+		
+class Enemy(Hero):
+	def __init__(self, char_type, x, y, scale, speed, ammo):
+		super().__init__(char_type, x, y, scale, speed, ammo)
+		#ai specific variables
+		self.move_counter = 0
+		self.vision = pygame.Rect(0, 0, 150, 20)
+		self.idling = False
+		self.idling_counter = 0
+
 	def ai(self):
 		if self.alive and player.alive:
 			if self.idling == False and random.randint(1, 200) == 1:
@@ -300,40 +338,6 @@ class Hero(pygame.sprite.Sprite):
 		#scroll
 		self.rect.x += screen_scroll
 
-	def update_animation(self):
-		#update animation
-		ANIMATION_COOLDOWN = 100
-		#update image depending on current frame
-		self.image = self.animation_list[self.action][self.frame_index]
-		#check if enough time has passed since the last update
-		if pygame.time.get_ticks() - self.update_time > ANIMATION_COOLDOWN:
-			self.update_time = pygame.time.get_ticks()
-			self.frame_index += 1
-		#if the animation has run out the reset back to the start
-		if self.frame_index >= len(self.animation_list[self.action]):
-			if self.action == 3:
-				self.frame_index = len(self.animation_list[self.action]) - 1
-			else:
-				self.frame_index = 0
-
-	def update_action(self, new_action):
-		#check if the new action is different to the previous one
-		if new_action != self.action:
-			self.action = new_action
-			#update the animation settings
-			self.frame_index = 0
-			self.update_time = pygame.time.get_ticks()
-
-	def check_alive(self):
-		if self.health <= 0:
-			self.health = 0
-			self.speed = 0
-			self.alive = False
-			self.update_action(3)
-
-	def draw(self): 
-		screen.blit(pygame.transform.flip(self.image, self.flip, False), self.rect)
-
 class World():
 	def __init__(self):
 		self.obstacle_list = []
@@ -361,7 +365,7 @@ class World():
 						player = Hero('player', x * TILE_SIZE, y * TILE_SIZE, 1.7 , 5, 20)
 						health_bar = HealthBar(10, 10, player.health, player.health)
 					elif tile == 34:#create enemies
-						enemy = Hero('enemy', x * TILE_SIZE, y * TILE_SIZE, 1.7, 2, 20)
+						enemy = Enemy('enemy', x * TILE_SIZE, y * TILE_SIZE, 1.7, 2, 20)
 						enemy_group.add(enemy)
 					elif tile == 32:#create ammo box
 						item_box = ItemBox('Ammo', x * TILE_SIZE, y * TILE_SIZE)

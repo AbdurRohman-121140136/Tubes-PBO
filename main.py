@@ -63,6 +63,7 @@ back4 = pygame.image.load('img/Background/4.png').convert_alpha()
 back4 = pygame.transform.rotozoom(back4, 0, 2)
 back5 = pygame.image.load('img/Background/5.png').convert_alpha()
 back5 = pygame.transform.rotozoom(back5, 0, 2)
+back6 = pygame.image.load('img/Background.png').convert_alpha()
 #store tiles in a list
 img_list = []
 for x in range(TILE_TYPES):
@@ -546,7 +547,7 @@ while run:
 
 	if start_game == False:
 		#draw menu
-		screen.blit(back2, (0,0))
+		screen.blit(back6, (0,0))
 		#add buttons
 		if start_button.draw(screen):
 			start_game = True

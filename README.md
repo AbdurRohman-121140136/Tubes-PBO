@@ -31,5 +31,5 @@ https://app.diagrams.net/#G1zsric5aIghytZ5DKN7zpb8JOoasvD54i
 | :---: | :---: | :---: | :---: |
 | Varell Anthonio | 121140122 | Designer | VarellAnthonio |
 | Abdur Rohman | 121140136 | Programmer | rhmnx |
-| Pandu Putra Mulwanda | 121140216 | Programmer | 2002Sidomulyo |
+| Pandu Putra Mulwanda | 121140176 | Programmer | 2002Sidomulyo |
 | Daniel Dianutama Barus | 121140180 | Designer | nilllDian |
